@@ -95,14 +95,21 @@ la cui data di nascita NON è compresa tra il 1990-01-01 e il 1994-12-31
 e il cui genere è 'femmina' e ordina per data di nascita dalla più recente alla più remota,
 per cognome e per nome
 */
-
+select `cognome`, `nome`, `email`, `data_nascita`
+from `studenti`
+where `data_nascita` not between '1990-01-01' and '1994-12-31'
+and `genere` = 'f'
+order by `data_nascita` desc, `cognome`, `nome`;
 /*
 11
 seleziona il cognome, il nome, l'email e la data di nascita
 dalla tabella studenti
 il cui cognome inizia per 'b' e ordina per cognome e nome
 */
-
+select `cognome`, `nome`, `email`, `data_nascita`
+from `studenti`
+where `cognome` regexp '^b'
+order by `cognome`, `nome`;
 /*
 12
 seleziona il cognome, il nome, l'email e la data di nascita
@@ -110,3 +117,7 @@ dalla tabella studenti
 il cui cognome inizia per 'ba' o 'ga' e ordina per cognome e nome
 usate regexp
 */
+select `cognome`, `nome`, `email`, `data_nascita`
+from `studenti`
+where `cognome` regexp '^(ba|ga)'
+order by `cognome`, `nome`;

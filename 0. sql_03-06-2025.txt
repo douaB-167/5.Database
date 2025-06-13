@@ -1,0 +1,82 @@
+- mysql -u root -p
+	Enter password: ***
+- mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+- mysql> show tables;
+	ERROR 1046 (3D000): No database selected
+- mysql> create database app_java2025;
+- mysql> create user 'appjava'@'localhost' identified by 'java2025!';
+- mysql> grant all on app_java2025.* to 'appjava'@'localhost';
+- mysql> show create database app_java2025;
++--------------+----------------------------------------------------------------------------------------------------------------------------------------+
+| Database     | Create Database                                                                                                                        |
++--------------+----------------------------------------------------------------------------------------------------------------------------------------+
+| app_java2025 | CREATE DATABASE `app_java2025` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */ |
++--------------+----------------------------------------------------------------------------------------------------------------------------------------+
+- mysql> use app_java2025;
+	Database changed
+- mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| app_java2025       |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+- mysql> show tables;
+	Empty set (0.01 sec)
+- mysql> select database();
++--------------+
+| database()   |
++--------------+
+| app_java2025 |
++--------------+
+- mysql> create table demo(
+    -> id INT AUTO_INCREMENT,
+    -> eta TINYINT UNSIGNED,
+    -> pagine SMALLINT UNSIGNED,
+    -> PRIMARY KEY(id)
+    -> );
+- mysql> show tables;
++------------------------+
+| Tables_in_app_java2025 |
++------------------------+
+| demo                   |
++------------------------+
+- mysql> desc demo;
++--------+-------------------+------+-----+---------+----------------+
+| Field  | Type              | Null | Key | Default | Extra          |
++--------+-------------------+------+-----+---------+----------------+
+| id     | int               | NO   | PRI | NULL    | auto_increment |
+| eta    | tinyint unsigned  | YES  |     | NULL    |                |
+| pagine | smallint unsigned | YES  |     | NULL    |                |
++--------+-------------------+------+-----+---------+----------------+
+- mysql> show create table demo;
++-------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Table | Create Table                                                                                                                                                                                                                        |
++-------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| demo  | CREATE TABLE `demo` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `eta` tinyint unsigned DEFAULT NULL,
+  `pagine` smallint unsigned DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci |
++-------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+- mysql> create table if not exists demo(id int auto_increment, eta tinyint, primary key(id));
+	Query OK, 0 rows affected, 1 warning (0.01 sec)
+- mysql> show warnings;
++-------+------+-----------------------------+
+| Level | Code | Message                     |
++-------+------+-----------------------------+
+| Note  | 1050 | Table 'demo' already exists |
++-------+------+-----------------------------+
+mysql>

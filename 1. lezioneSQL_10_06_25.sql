@@ -1,3 +1,5 @@
+use app_java2025; 
+
 drop table demo, test;
 
 create table if not exists `studenti`(
