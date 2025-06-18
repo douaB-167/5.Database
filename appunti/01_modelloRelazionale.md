@@ -38,15 +38,15 @@
 ### Entità
 Concetto fondamentale, generale, per la realtà che si sta modellando.  
 Rappresenta **classi di oggetti** che hanno **proprietà comuni** ed **esistenza autonoma** ai fini dell'applicazione di interesse.
-* Identificata da un rettangolo  --->  ![alt text](./img/image.png)
+* Identificata da un rettangolo  --->  ![alt text](./img/image-00.png)
   
 ### Attributi
 **Caratteristiche specifiche di un'entità**, utili (o necessarie) nella realtà da modellare
-* Identificata da un cerchio collegato all'entità  --->  ![alt text](./img/image-1.png)
+* Identificata da un cerchio collegato all'entità  --->  ![alt text](./img/image-01.png)
 L'insieme di attributi che garantisce **l'univocità** delle istanze di un'entità è detta **Chiave Primaria**.  
 E' indicata come: **PRIMARY KEY** o PK.  
   
-Identificata graficamente con un cerchio pieno collegato all'entità e relativo nome attributo sottolineato.  --->  ![alt text](./img/image-2.png)  
+Identificata graficamente con un cerchio pieno collegato all'entità e relativo nome attributo sottolineato.  --->  ![alt text](./img/image-02.png)  
   
 #### Caratteristiche
 * L'insieme dei campi i cui valori identificano univocamente un record all'interno di una tabella è detto Chiave Primaria. Quando la chiave primaria è composta un solo campo, si parla di campo chiave.
@@ -56,11 +56,11 @@ Esempi di campo chiave: matricola, codice fiscale, etc...
 #### Istanze di un'entità
 Specifici dati, oggetti appartenenti ad un'entità
 * non sono rappresentate nel Diagramma E-R ma si intendono contenute in ogni entità;
-* Carlo, Rossi, via Verdi e un'**istanza** dell'**entità ALUNNO (attributi: Nome, Cognome, Indirizzo)**  --->  ![alt text](./img/image-3.png)  
+* Carlo, Rossi, via Verdi e un'**istanza** dell'**entità ALUNNO (attributi: Nome, Cognome, Indirizzo)**  --->  ![alt text](./img/image-03.png)  
   
 Possiamo considerare le entità come sistemi all'interno dei quali sono contenuti oggetti (le istanze) ciascuno con specifiche caratteristiche (valore degli attributi)  
    
 ### Relazioni (Associazioni)
 Collegamenti logici che uniscono due o più entità nella realtà descritta dal database
 * identificata da un rombo collegato alle due entità
-![alt text](./img/image-4.png)
+![alt text](./img/image-04.png)
