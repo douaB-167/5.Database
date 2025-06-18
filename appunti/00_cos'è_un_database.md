@@ -133,4 +133,5 @@ Con MySQL, a partire dalla versione 4.1, possiamo gestire i set di caratteri a l
 Ad ogni set di caratteri sono associate una o più collation, che rappresentano i modi possibili di confrontare le stringhe di caratteri facenti parte di quel character set.  
   
 Esempio: una determinata tabella utilizza il utf8 (quello maggiormente usato in Europa Occidentale) e la utf8_general_ci.  
-Tale collation è multilingue e "case insensitive" (_ci), cioè non tiene conto della differenza fra maiuscole e minuscole nell'ordinare o confrontare le stringhe.
+Tale collation è multilingue e "case insensitive" (_ci), cioè non tiene conto della differenza fra maiuscole e minuscole nell'ordinare o confrontare le stringhe.  
+La **collation** è un insieme di regole.  
