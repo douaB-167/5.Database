@@ -52,3 +52,12 @@ Questo rende il timestamp utile quando devi mostrare gli stessi dati e ora a ute
 Timestamp copre solo il range di date da 1970-01-01 00:00:01 UTC fino a 2038-01-19 03:14:07 UTC  
 Se hai bisogno di memorizzare date al di fuori di questo intervallo, non è adatto.  
 ## datetime
+Il tipo datetime memorizza la data e l'ora così come sono, senza conversioni di fuso orario. Il valore viene memorizzato esattamente come viene inserito, senza alcuna considerazione del fuso orario del server o del client.  
+Questo significa che datetime è utile quando vuoi che la data e l'ora restino fisse, indipendentemente dal fuso orario dell'utente o del server.  
+E' una buona scelta se i dati di data e ora devono essere gli stessi per tutti, ovunque si trovino.  
+Datetime ha un range molto più ampio, da 1000-01-01 00:00:00 a 9999-12-31 23:59:59, quindi può essere usato per date molto più lontane nel passato o nel futuro rispetto a timestamp.  
+  
+## JSON
+MySQL supporta JSON nativo come tipo di dati per gli oggetti nella notazione JSON.  
+Rende facile l'archiviazione, l'interrogazione e il recupero di documenti di tipo JSON piuttosto che archiviarli come stringhe di testo o blob binari.  
+Sintassi per la definizione di un attributo di tipo JSON: columnName JSON.
