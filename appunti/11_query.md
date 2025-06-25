@@ -159,4 +159,57 @@ Utilizzando l'operatore **BETWEEN** possiamo selezionare un intervallo di valori
     </pre>
   
 ### IS NULL, IS NOT NULL
-L'operatore
+L'operatore **IS NULL** viene utilizzato per visualizzare i record che non hanno un valore impostato per un campo.  
+Viceversa **IS NOT NULL** mostra i record che hanno un valore impostato per un campo.
+    <pre>
+        SELECT nome, cognome, email, data_nascita
+        FROM studenti
+        WHERE data_nascita IS NULL;
+    </pre>
+Questi operatori possono essere utilizzati per trovare i record che hanno bisogno di informazioni aggiuntive.  
+  
+### LIKE, NOT LIKE
+L'operatore **LIKE** permette di effettuare ricerche testuali con pattern matching.  
+**ATTENZIONE**: NOT LIKE non considera i valori NULL
+    <pre>SELECT * FROM studenti WHERE cognome LIKE 'v%';</pre>
+    <pre>SELECT * FROM studenti WHERE nome LIKE '%a';</pre>
+    <pre>SELECT * FROM studenti WHERE indirizzo LIKE 'via %';</pre>
+    <pre>SELECT * FROM studenti WHERE email LIKE '%gmail.com';</pre>
+    <pre>SELECT * FROM studenti WHERE nome LIKE 'paol_';</pre>
+    <pre>SELECT * FROM studenti WHERE nome LIKE '_a%';</pre>
+La differenza è data dalla posizione del carattere percentuale (%) che sta ad indicare "qualsiasi carattere dopo" e "qualsiasi carattere prima".  
+L'uso di underscore indica un solo carattere.  
+  
+### REGEXP_LIKE() (REGEXP e RLIKE sono sinonimi di REGEXP_LIKE())
+Un operatore più potente di LIKE è **REGEXP** il quale consente di utilizzare molti più simboli per ricerche più complesse.
+    <pre>SELECT * FROM studenti WHERE REGEXP_LIKE(nome,'ra'); SELECT * FROM studenti WHERE nome REGEXP 'ra';</pre>
+    <pre>SELECT * FROM studenti WHERE nome REGEXP '^mar';</pre>
+    <pre>SELECT * FROM studenti WHERE nome REGEXP 'co$';</pre>
+    <pre>SELECT * FROM studenti WHERE nome REGEXP 'mar|ara|ola';</pre>
+Potete combinare i simboli
+    <pre>SELECT * FROM studenti WHERE nome REGEXP '^mar|ara|co$';</pre>
+    <pre>SELECT * FROM studenti WHERE nome REGEXP '^(mar|ara)|co$'; -- comincia per 'mar' o 'ara' o finisce con 'co'</pre>
+Creare conbinazioni di pattern
+    <pre>SELECT * FROM studenti WHERE nome REGEXP '[mcp]a';</pre>
+    <pre>SELECT * FROM studenti WHERE nome REGEXP 'a[ero]';</pre>
+    <pre>SELECT * FROM studenti WHERE nome REGEXP 'l[ao]$';</pre>
+    <pre>SELECT * FROM studenti WHERE nome REGEXP '^[a-m]'; -- '^[n-z]'</pre>
+  
+## Operatori matematici
+MySQL supporta i classici operatori matematici tradizionali, cioè:
+* '+' (addizione)
+* '-' (sottrazione)
+* '*' (moltiplicazione)
+* '/' (divisione)
+* '%' (modulo)
+Questi operatori risultano molto utili quando, ad esempio, si devono svolgere dei calcoli all'interno di una SELECT.  
+Per fare un esempio si supponga di voler restituire il valore dato dalla sottrazione di due campi.
+    <pre>
+        SELECT (field1 - field2)
+        FROM tableName
+        [WHERE condition(s)];
+    </pre>
+Potete eseguire dei calcoli matematici con SELECT:
+    <pre>SELECT 6 / 2 ; ##3</pre>
+    <pre>SELECT 35 % 3 ; ##2</pre>
+    <pre>SELECT (35 / 3) * 2 ; ##11.6667</pre>
