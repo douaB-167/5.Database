@@ -155,3 +155,12 @@ order by `cognome`; /* combina con una di quelle lettere con quella di fuori */
 
 select * from `studenti`
 where `nome` regexp '^[a-m]'; 
+
+## aggiunto durante la lezione del 27/06/25
+select title, price, price * 1.10 
+from books;
+
+select title, price, price + price_VAT
+from books;
+
+select 30/5;
