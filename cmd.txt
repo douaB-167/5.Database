@@ -1,0 +1,117 @@
+C:\Program Files\MySQL\MySQL Server 8.4\bin>mysql -u appjava -p app_java2025
+Enter password: *********
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 8
+Server version: 8.4.4 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2025, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases();
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '()' at line 1
+mysql> select database();
++--------------+
+| database()   |
++--------------+
+| app_java2025 |
++--------------+
+1 row in set (0.01 sec)
+
+mysql> show tables;
++------------------------+
+| Tables_in_app_java2025 |
++------------------------+
+| demo                   |
++------------------------+
+1 row in set (0.05 sec)
+
+mysql> describe demo
+    -> ;
++--------+-------------------+------+-----+---------+----------------+
+| Field  | Type              | Null | Key | Default | Extra          |
++--------+-------------------+------+-----+---------+----------------+
+| id     | int               | NO   | PRI | NULL    | auto_increment |
+| eta    | tinyint unsigned  | YES  |     | NULL    |                |
+| pagine | smallint unsigned | YES  |     | NULL    |                |
++--------+-------------------+------+-----+---------+----------------+
+3 rows in set (0.01 sec)
+
+mysql> show create table demo;
++-------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Table | Create Table                                                                                                                                                                                                                        |
++-------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| demo  | CREATE TABLE `demo` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `eta` tinyint unsigned DEFAULT NULL,
+  `pagine` smallint unsigned DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci |
++-------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+1 row in set (0.01 sec)
+
+mysql> create table if not exists demo2(
+    -> `id` int not null auto_increment primary key,
+    -> `provincia` char(2) default 'to',
+    -> `email` varchar(100) not null unique
+    -> );
+Query OK, 0 rows affected (0.07 sec)
+
+mysql> show tables;
++------------------------+
+| Tables_in_app_java2025 |
++------------------------+
+| demo                   |
+| demo2                  |
++------------------------+
+2 rows in set (0.00 sec)
+
+mysql> rename table demo2 to test;
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> show tables;
++------------------------+
+| Tables_in_app_java2025 |
++------------------------+
+| demo                   |
+| test                   |
++------------------------+
+2 rows in set (0.00 sec)
+
+mysql> desc test;
++-----------+--------------+------+-----+---------+----------------+
+| Field     | Type         | Null | Key | Default | Extra          |
++-----------+--------------+------+-----+---------+----------------+
+| id        | int          | NO   | PRI | NULL    | auto_increment |
+| provincia | char(2)      | YES  |     | to      |                |
+| email     | varchar(100) | NO   | UNI | NULL    |                |
++-----------+--------------+------+-----+---------+----------------+
+3 rows in set (0.00 sec)
+
+mysql> show column from test;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'column from test' at line 1
+mysql> show columns from test;
++-----------+--------------+------+-----+---------+----------------+
+| Field     | Type         | Null | Key | Default | Extra          |
++-----------+--------------+------+-----+---------+----------------+
+| id        | int          | NO   | PRI | NULL    | auto_increment |
+| provincia | char(2)      | YES  |     | to      |                |
+| email     | varchar(100) | NO   | UNI | NULL    |                |
++-----------+--------------+------+-----+---------+----------------+
+3 rows in set (0.00 sec)
+
+mysql> show full columns from test;
++-----------+--------------+--------------------+------+-----+---------+----------------+---------------------------------+---------+
+| Field     | Type         | Collation          | Null | Key | Default | Extra          | Privileges                      | Comment |
++-----------+--------------+--------------------+------+-----+---------+----------------+---------------------------------+---------+
+| id        | int          | NULL               | NO   | PRI | NULL    | auto_increment | select,insert,update,references |         |
+| provincia | char(2)      | utf8mb4_0900_ai_ci | YES  |     | to      |                | select,insert,update,references |         |
+| email     | varchar(100) | utf8mb4_0900_ai_ci | NO   | UNI | NULL    |                | select,insert,update,references |         |
++-----------+--------------+--------------------+------+-----+---------+----------------+---------------------------------+---------+
+3 rows in set (0.00 sec)
+
+mysql>
