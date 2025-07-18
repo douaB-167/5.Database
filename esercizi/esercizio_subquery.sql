@@ -51,15 +51,24 @@ where ordini.data = (select min(ordini.data) from ordini);
 -- q01
 select cognome, nome from clienti;
 
-insert into clienti
 insert into ordini(cliente_id, data, consegna)
-values (7, '2025-07-15', 'da spedire');
-
-insert into ordini_dettaglio(ordine_id, quantita)
-values(last_insert_id(ordine_id), 10)
+values (7, curdate(), 'da spedire');
 -- q02
+select last_insert_id(cliente_id) from ordini;
+select id from articoli where descrizione = "Monitor";
 
+insert into ordini_dettaglio(ordine_id, articolo_id, quantita)
+select last_insert_id(),(select id from articoli where descrizione = "Monitor"), 10;
 
 -- 07) selezionate elenco dei corsi con il valore massimo di iscritti
 -- ricordatevi dell'operatore ALL, fate riferimento alla slide
-select max()
+use corsi;
+select corsi.nome_corso titolo, count(iscrizioni.studente_id) `Numero iscritti`
+from corsi
+join iscrizioni
+on corsi.id = iscrizioni.corso_id
+group by titolo
+having `Numero iscritti` >= ALL
+			(select count(studente_id)
+            from iscrizioni 
+            group by corso_id);
